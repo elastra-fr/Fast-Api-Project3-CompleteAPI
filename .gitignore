@@ -5,3 +5,4 @@
 tests.http 
 .env
 /TodoApp/todos.db
+/TodoApp/todosapp.db
