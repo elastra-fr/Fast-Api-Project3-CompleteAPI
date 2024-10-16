@@ -6,3 +6,4 @@ tests.http
 .env
 /TodoApp/todos.db
 /TodoApp/todosapp.db
+/TodoApp/__pycache__/*  
