@@ -1,6 +1,7 @@
 from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
+
 class Users(Base):
     __tablename__ = "users"
 
@@ -14,7 +15,7 @@ class Users(Base):
     role = Column(String, index=True)
 
 
-#Create a class for the Todo model
+# Create a class for the Todo model
 class Todo(Base):
     __tablename__ = "todos"
 
@@ -24,4 +25,3 @@ class Todo(Base):
     priority = Column(Integer, index=True)
     complete = Column(Boolean, index=True, default=False)
     owner_id = Column(Integer, ForeignKey("users.id"))
-    

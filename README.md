@@ -1,11 +1,8 @@
 
 # Complete App
 
-work in progress
+Complete todo app with user management and JWT Auth
 
-
-
-## Env
 
 ### Creating virtual env
 
@@ -15,11 +12,18 @@ python -m venv .venv
 
 .\.venv\Scripts\Activate
 
-### Install Fast API
+### Install dependencies
 
-pip install "fastapi[standard]"
+Dependencies are listed in requirements.txt
+
+You can install them with :
+
+pip install -r requirements.txt
+
 
 ### Start Application 
+
+cd TodoApp
 
 uvicorn main:app --reload
 
