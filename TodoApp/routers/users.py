@@ -31,8 +31,8 @@ db_dependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Create the request model
 
+# Create the request model
 
 class UserVerification(BaseModel):
     password: str
@@ -47,8 +47,8 @@ async def get_user(user: user_dependency, db: db_dependency):
 
     return db.query(Users).filter(Users.id == user.get("id")).first()
 
-# Update user password
 
+# Update user password
 
 @router.put("/password", status_code=status.HTTP_204_NO_CONTENT)
 async def change_password(user: user_dependency, db: db_dependency, user_verification: UserVerification):

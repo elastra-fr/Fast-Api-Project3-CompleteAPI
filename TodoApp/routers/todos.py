@@ -58,8 +58,8 @@ async def read_todo(user: user_dependency, db: db_dependency, todo_id: int = Pat
         return todo_model
     raise HTTPException(status_code=404, detail="Todo item not found")
 
-# Create a new todo item
 
+# Create a new todo item
 
 @router.post("/todo", status_code=status.HTTP_201_CREATED)
 async def create_todo(user: user_dependency,  db: db_dependency, todo_request: TodoRequest):
@@ -74,8 +74,8 @@ async def create_todo(user: user_dependency,  db: db_dependency, todo_request: T
     db.add(todo_model)
     db.commit()
 
-# Update a todo item by id - With status code and Path parameter validation
 
+# Update a todo item by id - With status code and Path parameter validation
 
 @router.put("/todo/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def update_todo(user: user_dependency, todo_request: TodoRequest, db: db_dependency, todo_id: int = Path(gt=0)):
@@ -97,8 +97,8 @@ async def update_todo(user: user_dependency, todo_request: TodoRequest, db: db_d
     db.add(todo_model)
     db.commit()
 
-# Delete a todo item by id - With status code and Path parameter validation
 
+# Delete a todo item by id - With status code and Path parameter validation
 
 @router.delete("/todo/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_todo(user: user_dependency, db: db_dependency, todo_id: int = Path(gt=0)):
