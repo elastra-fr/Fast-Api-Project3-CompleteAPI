@@ -7,3 +7,4 @@ tests.http
 /TodoApp/todos.db
 /TodoApp/todosapp.db
 /TodoApp/__pycache__/*  
+/TodoApp/routers/__pycache__/*

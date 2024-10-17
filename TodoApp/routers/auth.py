@@ -41,6 +41,10 @@ class CreateUserRequest(BaseModel):
     password: str
     role: str
 
+class JSONLoginRequest(BaseModel):
+    username: str
+    password: str
+
 # Create the response model
 
 
@@ -128,6 +132,18 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
 @router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: db_dependency):
     user = authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="Could not validate credentials")
+    token = create_access_token(
+        user.username, user.id, user.role, timedelta(minutes=60))
+
+    return {"access_token": token, "token_type": "bearer"}
+
+# Route pour l'authentification via JSON
+@router.post("/json-token", response_model=Token)
+async def login_with_json(json_request: JSONLoginRequest, db: db_dependency):
+    user = authenticate_user(db, json_request.username, json_request.password)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Could not validate credentials")
