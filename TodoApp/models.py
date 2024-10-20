@@ -13,7 +13,9 @@ class Users(Base):
     hashed_password = Column(String, index=True)
     is_active = Column(Boolean, default=True)
     role = Column(String, index=True)
+    phone_number = Column(String, nullable=True)
 
+    
 
 # Create a class for the Todo model
 class Todo(Base):
