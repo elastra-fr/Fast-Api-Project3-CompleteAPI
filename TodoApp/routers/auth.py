@@ -1,11 +1,11 @@
-from database import SessionLocal
+from ..database import SessionLocal
 from datetime import timedelta, datetime, timezone
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
-from models import Users
+from ..models import Users
 from passlib.context import CryptContext
 from pydantic import BaseModel
 from sqlalchemy.orm import Session

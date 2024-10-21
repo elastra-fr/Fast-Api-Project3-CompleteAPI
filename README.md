@@ -23,7 +23,5 @@ pip install -r requirements.txt
 
 ### Start Application 
 
-cd TodoApp
-
-uvicorn main:app --reload
+uvicorn TodoApp.main:app --reload
 

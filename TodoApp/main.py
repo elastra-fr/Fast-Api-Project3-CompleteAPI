@@ -1,7 +1,7 @@
-from database import engine
+from .database import engine
 from fastapi import FastAPI
-from routers import auth, todos, admin, users
-import models
+from .routers import auth, todos, admin, users
+from .models import Base
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -24,7 +24,7 @@ app.add_middleware(
 )   
 
 #Create the database tables
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 @app.get("/healthy")
 def health_check():
